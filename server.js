@@ -13,14 +13,20 @@ const evaluationRoutes = require('./routes/evaluation');
 const app = express();
 
 app.use(cors({
-  origin: "https://attendance-system-frontend-bqij.vercel.app"
+  //origin: "https://attendance-system-frontend-bqij.vercel.app"
+  //origin: "http://localhost:5173",
+   origin: [
+    "http://localhost:5173",
+    "https://attendance-system-frontend-bqij.vercel.app"
+  ],
+  credentials: true
 }));
 
 app.use(express.json());
 
-/* app.get("/", (req, res) => {
+ app.get("/", (req, res) => {
   res.send("Backend is running successfully ");
-}); */
+}); 
 
 // Routes
 app.use('/api/auth', authRoutes);
