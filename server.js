@@ -12,8 +12,15 @@ const evaluationRoutes = require('./routes/evaluation');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://attendance-system-frontend-bqij.vercel.app"
+}));
+
 app.use(express.json());
+
+/* app.get("/", (req, res) => {
+  res.send("Backend is running successfully ");
+}); */
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -33,3 +40,4 @@ mongoose.connect(process.env.MONGO_URI )
     });
   })
   .catch(err => console.error('MongoDB connection error:', err));
+  
